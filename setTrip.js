@@ -2,9 +2,12 @@ javascript: function ctAddList(listStr) {
     var data = JSON.parse(listStr).data;
     var header = document.getElementById('ctl00_uxLoginStatus_divSignedIn');
     var options = "";
+    var selected = '"';
     if (data.length > 0) {
         data.forEach(function(item) {
-            options = options + '<option value="' + item.id + '">' + item.turnavn + '</option>';
+            if (tripId === item.id) {selected = '" selected';}
+            options = options + '<option value="' + item.id + selected + '>' + item.turnavn + '</option>';
+            selected='"';
         });
     }
     var ctSel = '<li id="ct-header"><span id="ct-header-text"><select id="cachetur-tur-valg">' + options + '</select>' + '</span></li>';
