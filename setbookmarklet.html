@@ -13,4 +13,10 @@ If your browser supports the Cachetur Assistant, you should use it rather than t
 <a href="javascript:function cacheturAdd() { var tripId = localStorage.getItem(&quot;ctTrip&quot;);var ctParts = location.href.split(&quot;/&quot;);var gccode = ctParts[ctParts.length - 1].split(&quot;_&quot;);if (tripId) {var req = new XMLHttpRequest();req.open('GET', 'https://cachetur.no/api/planlagt_add_codes?format=json&tur=' + tripId + '&code='+gccode, true);req.withCredentials = true;req.onreadystatechange = function() {if (req.readyState === 4) {if (req.status >= 200 && req.status < 400) {var mainDiv = document.getElementById(&quot;divContentMain&quot;);var okMsg = '<div id=&quot;ctOkMsg&quot; style=&quot;position:fixed;top:200px;left:200px;z-index:9999;font-size:20px;border:5px solid #0f0;opacity:1;background-color:#fff&quot;>&nbsp;&#x2714; ' +  localStorage.getItem(&quot;ctTripName&quot;) + '&nbsp;</div>';mainDiv.insertAdjacentHTML('afterbegin', okMsg);setTimeout(function(){ var elem = document.querySelector('#ctOkMsg');elem.parentNode.removeChild(elem); }, 2000);} else {}}};req.send();}}cacheturAdd();">Add Cache</a>
 
 <h3>Installing the bookmarklets in a mobile browser</h3>
+  <h4>Chrome</h4>
+  On iOS, long press one of the two links above and choose "Copy Link URL". Tap the star in the URL bar to create a bookmark and then tap "Edit" when it is displayed at the bottom of the screen.
+  In the "Edit Bookmark" dialog, change the name to suit (like "Set Trip" maybe). Tap the URL field and use the X to clear the field. Then tape the empty field and Paste the URL text you copied earlier. Finally, tape DONE.
+  To use the bookmarklet, when on a web cache page, use the Bookmarklets menu item to select the bookmarklet you defined.
+  <h4>Safari</h4>
+  
 The simplest way is to first create a new bookmarklet from any old web page you happen to be on. Then open the bookmark manager and edit that bookmark. Change the name to be what you want and paste the bookmarklet text into the URL field.
