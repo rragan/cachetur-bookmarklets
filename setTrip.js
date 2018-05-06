@@ -7,6 +7,7 @@ javascript: function ctAddList(listStr) {
 
     if (data.length > 0) {
         data.forEach(function(item) {
+            if (tripId === undefined) {tripId = item.id};
             if (tripId === item.id) {selected = '" selected';}
             options = options + '<option value="' + item.id + selected + '>' + item.turnavn + '</option>';
             selected='"';
