@@ -1,8 +1,10 @@
 javascript: function ctAddList(listStr) {
     var data = JSON.parse(listStr).data;
-    var header = document.getElementById('ctl00_uxLoginStatus_divSignedIn');
+    var tripId = localStorage.getItem("ctTrip");
+    var header = document.getElementsByClassName("menu")[0];
     var options = "";
     var selected = '"';
+
     if (data.length > 0) {
         data.forEach(function(item) {
             if (tripId === item.id) {selected = '" selected';}
@@ -10,8 +12,9 @@ javascript: function ctAddList(listStr) {
             selected='"';
         });
     }
-    var ctSel = '<li id="ct-header"><span id="ct-header-text"><select id="cachetur-tur-valg">' + options + '</select>' + '</span></li>';
-    header.insertAdjacentHTML('afterbegin', ctSel);
+       var ctSel = '<div id="ct-header-text" style="padding-left:5px"><select id="cachetur-tur-valg">' + options + '</select>' + '</div>';
+
+   header.insertAdjacentHTML('afterend', ctSel);
     var ctTripSelector = document.getElementById("cachetur-tur-valg");
     ctTripSelector.addEventListener('change', function() {
         localStorage.setItem("ctTrip", ctTripSelector.value);
@@ -28,7 +31,7 @@ function ctGetTrips() {
         if (req.readyState === 4) {
             if (req.status >= 200 && req.status < 400) {
                 ctAddList(req.responseText);
-            } else {}
+            }
         }
     };
     req.send();
