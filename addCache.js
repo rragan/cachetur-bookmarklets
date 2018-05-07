@@ -3,7 +3,6 @@ javascript:function cacheturAdd() {
     var gccode;
     var mainDiv = document.getElementById("Content");
 
-    var where;
     if (location.href.indexOf("geocaching.com/map") != -1) {
     	var codeElts = document.getElementsByClassName("code");
     	if (codeElts.length > 0) {
