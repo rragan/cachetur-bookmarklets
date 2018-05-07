@@ -1,10 +1,25 @@
 javascript: function ctAddList(listStr) {
+    var mobile = window.matchMedia("(min-width: 420px)");
+    var narrow = !mobile.matches;
     var data = JSON.parse(listStr).data;
     var tripId = localStorage.getItem("ctTrip");
-    var header = document.getElementsByClassName("menu")[0];
+    var menuInsertLoc = document.getElementsByClassName("logo")[0];;
+    var menuInsertWhere = "afterend";
+    if (location.href.indexOf("geocaching.com/map") != -1) {
+        if (narrow) {
+            menuInsertLoc = document.getElementsByClassName("mobile-menu-toggle")[0];
+            menuInsertWhere = "beforebegin";
+        }
+    }
+    if (location.href.indexOf("geocaching.com/geocache") != -1) {
+        if (narrow) {
+            menuInsertLoc = document.getElementsByClassName("logo")[0];
+            menuInsertWhere = "beforebegin";
+        }
+    }
+    
     var options = "";
     var selected = '"';
-
     if (data.length > 0) {
         data.forEach(function(item) {
             if (tripId === undefined) {tripId = item.id};
@@ -13,9 +28,9 @@ javascript: function ctAddList(listStr) {
             selected='"';
         });
     }
-       var ctSel = '<div id="ct-header-text" style="padding-left:5px"><select id="cachetur-tur-valg">' + options + '</select>' + '</div>';
+    var ctSel = '<div id="ct-header-text" style="padding-left:5px"><select id="cachetur-tur-valg">' + options + '</select>' + '</div>';
 
-   header.insertAdjacentHTML('afterend', ctSel);
+    menuInsertLoc.insertAdjacentHTML(menuInsertWhere, ctSel);
     var ctTripSelector = document.getElementById("cachetur-tur-valg");
     ctTripSelector.addEventListener('change', function() {
         localStorage.setItem("ctTrip", ctTripSelector.value);
@@ -24,7 +39,7 @@ javascript: function ctAddList(listStr) {
 }
 
 function ctGetTrips() {
-    if (document.getElementById("ct-header")) {return;}
+    if (document.getElementById("ct-header-text")) {return;}
     var req = new XMLHttpRequest();
     req.open('GET', 'https://cachetur.no/api/planlagt_list_editable?format=json', true);
     req.withCredentials = true;
@@ -38,4 +53,3 @@ function ctGetTrips() {
     req.send();
 }
 ctGetTrips();
-
