@@ -3,7 +3,7 @@ javascript: function ctAddList(listStr) {
     var narrow = !mobile.matches;
     var data = JSON.parse(listStr).data;
     var tripId = localStorage.getItem("ctTrip");
-    var menuInsertLoc = document.getElementsByClassName("logo")[0];;
+    var menuInsertLoc = document.getElementsByClassName("menu")[0];;
     var menuInsertWhere = "afterend";
     if (location.href.indexOf("geocaching.com/map") != -1) {
         if (narrow) {
