@@ -86,7 +86,7 @@ if(ctDomain === "www.geocaching.com") {
     else if (ctPath.indexOf("/map") > -1) _ctPage = "gc_map";
     
 }
-else if (ctDomain === "project-gc.com" && pathname.indexOf("/User/VirtualGPS") > -1 && window.location.search.indexOf("?map=") === -1) _ctPage = "pgc_vgps";
+else if (ctDomain === "project-gc.com" && ctPath.indexOf("/User/VirtualGPS") > -1 && window.location.search.indexOf("?map=") === -1) _ctPage = "pgc_vgps";
 else if (ctDomain === "project-gc.com") {
     _ctPage = "pgc_map";
 }
