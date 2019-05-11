@@ -17,7 +17,7 @@ javascript:function ctGetRoute(id) {
                         color: 'purple'
                     });
                     _routeLine.addTo(ctMap);
-                    theMap.fitBounds(_routeLine.getBounds());
+                    ctMap.fitBounds(_routeLine.getBounds());
 
                 }
             }
@@ -73,7 +73,7 @@ function ctGetPage() {
         else if (ctPath.indexOf("/play/map") > -1) _ctPage = "gc_map_new";
         else if (ctPath.indexOf("/map") > -1) _ctPage = "gc_map";
 
-    } else if (ctDomain === "project-gc.com" && pathname.indexOf("/User/VirtualGPS") > -1 && window.location.search.indexOf("?map=") === -1) _ctPage = "pgc_vgps";
+    } else if (ctDomain === "project-gc.com" && ctPath.indexOf("/User/VirtualGPS") > -1 && window.location.search.indexOf("?map=") === -1) _ctPage = "pgc_vgps";
     else if (ctDomain === "project-gc.com") {
         _ctPage = "pgc_map";
     }
