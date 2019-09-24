@@ -1,0 +1,20 @@
+javascript: (function() {
+    function callback() {
+        (function($) {
+            var jQuery = $;
+            $('img').click(function() {
+                $(this).after(function() {
+                    return "<p><code>" + $(this).attr('title') + "</code></p>"
+                })
+            })
+        })(jQuery.noConflict(true))
+    }
+    var s = document.createElement("script");
+    s.src = "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js";
+    if (s.addEventListener) {r
+        s.addEventListener("load", callback, false)
+    } else if (s.readyState) {
+        s.onreadystatechange = callback
+    }
+    document.body.appendChild(s);
+})()
